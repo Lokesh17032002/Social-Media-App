@@ -1,6 +1,7 @@
 // creating express server 
 import express, { urlencoded } from "express";
 import authRoutes from "./routes/auth.routes.js"
+import userRoutes from "./routes/user.routes.js"
 import dotenv from "dotenv";
 import { connect } from "mongoose";
 import connectMongoDB from "./db/connectMongoDB.js";
@@ -21,6 +22,7 @@ app.use(cookieParser()) ;
 // console.log(process.env.MONGO_URI);
 
 app.use("/api/auth", authRoutes) ;
+app.use("/api/users", userRoutes) ;
 
 
 app.listen(PORT,()=>{
