@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const nortificationSchema = ({
+const nortificationSchema = new mongoose.Schema({
     from:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -12,7 +12,7 @@ const nortificationSchema = ({
         required: true
     },
     type:{
-        type: string,
+        type: String,
         required: true,
         enum: ['follow', 'like']
     },
