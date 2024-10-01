@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const nortificationSchema = new mongoose.Schema({
+const notificationSchema = new mongoose.Schema({
     from:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -23,6 +23,6 @@ const nortificationSchema = new mongoose.Schema({
 
 },{timestamps : true}) ;
 
-const Nortification = mongoose.model('Nortification',nortificationSchema) ;
+const Notification = mongoose.model('Notification',notificationSchema) ;
 
-export default Nortification ;
+export default Notification ;

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// import Post from "./post.model.js";
 
 //Created schema
 const userSchema= new mongoose.Schema({
@@ -18,7 +18,7 @@ const userSchema= new mongoose.Schema({
     },
     email:{
         type: String,
-        reuired: true,
+        required: true, 
         unique: true,
     },
     followers:[
@@ -51,6 +51,13 @@ const userSchema= new mongoose.Schema({
         type: String,
         default: "",
     },
+    likedPosts:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Post",
+            default:[]
+        }
+    ],
 },
 {timestamps:true}
 );
