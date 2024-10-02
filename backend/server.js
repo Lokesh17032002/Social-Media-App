@@ -1,13 +1,15 @@
 // creating express server 
 import express, { urlencoded } from "express";
-import authRoutes from "./routes/auth.routes.js"
-import userRoutes from "./routes/user.routes.js"
 import dotenv from "dotenv";
 import { connect } from "mongoose";
 import connectMongoDB from "./db/connectMongoDB.js";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary" ;
+
+import authRoutes from "./routes/auth.routes.js"
+import userRoutes from "./routes/user.routes.js"
 import postRoutes from "./routes/post.routes.js"
+import notificationRoutes from "./routes/notification.routes.js"
 
 //using this we will be able to read 
 dotenv.config(); 
@@ -32,6 +34,7 @@ app.use(cookieParser()) ;
 app.use("/api/auth", authRoutes) ;
 app.use("/api/users", userRoutes) ;
 app.use("/api/posts", postRoutes) ;
+app.use("/api/notifications", notificationRoutes) ;
 
 
 app.listen(PORT,()=>{

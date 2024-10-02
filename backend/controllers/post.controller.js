@@ -169,7 +169,6 @@ export const likeUnlikePost = async(req,res)=>{
     }
 };
 
-
 export const getAllPosts = async(req,res)=>{
     try {
         const posts = await Post.find().sort({ createdAt: -1}).populate({

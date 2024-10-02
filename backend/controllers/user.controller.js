@@ -8,7 +8,7 @@ import Notification from "../models/notification.model.js";
 
 export const getUserProfile = async(req, res) => {
     //In Express.js, req.params is an object that contains route parameters from the URL. These parameters are placeholders defined in the route that can be dynamic, like :username, which can change based on the request.
-    const {username} = req.parms ;
+    const {username} = req.params ;
 
     try {
         const user = await User.findOne({username}).select("-password") ;
