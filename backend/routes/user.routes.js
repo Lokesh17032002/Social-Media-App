@@ -5,7 +5,6 @@ import { followUnfollowUser } from '../controllers/user.controller.js';
 import { getSuggestedUsers } from '../controllers/user.controller.js';
 import { updateUser } from '../controllers/user.controller.js';
 
-
 const router = express.Router() ;
 
 //all of these should be protected b/c if not authenticated then cant update profile, cant follow or unfollow etc
