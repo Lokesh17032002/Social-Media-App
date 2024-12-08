@@ -1,6 +1,7 @@
 import { generateTokenAndSetCookie } from "../lib/utils/generateToken.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+// import validator from "validator";
 
 
 // This code defines a signup function that handles user registration, including input validation, checking if the user or email already exists, hashing the password, and saving the new user to the database.
@@ -11,6 +12,8 @@ export const signup = async(req,res) =>{
 
          // Email format check karne ke liye regular expression bana rahe hain
         const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ ;
+        //const emailRegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
         // Agar email format galat hai toh error response return karo
         if(!emailRegExp.test(email)){
@@ -114,6 +117,7 @@ export const logout = async(req,res) =>{
     try{
         res.cookie("jwt","",{maxAge:0});
         res.status(200).json({message:"Loged out successfully!"})
+        console.log("hello")
 
     } catch(error){
         console.log("Error in logout controller", error.message) ;
