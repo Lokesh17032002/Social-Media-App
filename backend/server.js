@@ -24,7 +24,8 @@ const app = express();
 const PORT= process.env.PORT || 5000;
 
 //Middle layers
-app.use(express.json()); //to parse req.body in auth.controllers.js
+app.use(express.json({limit: "10mb"})); //to parse req.body in auth.controllers.js(limit should not be too large 
+//otherwise DOS attack is easy on this)
 app.use(express.urlencoded({ extended:true })) ; //to parse form data
 app.use(cookieParser()) ;
 
