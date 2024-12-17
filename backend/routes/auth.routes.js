@@ -9,11 +9,8 @@ import { protectRoute } from "../middleware/protectRoute.js";
 const router = express.Router(); //It is used to create a modular set of route handlers.
 
 router.get("/me", protectRoute ,getMe) ;
-
 router.post("/signup", signup); //The first argument is the path string (like "/signup", "/login"). //The second argument is a function (like signup, login) that will handle the request.
-
 router.post("/login", login); //The post() method is used for handling POST requests (e.g., sending data such as a signup form or login credentials).
-
-router.get("/logout", logout); //The get() method is used for handling GET requests (e.g., retrieving data or performing simple actions like logging out).
+router.post("/logout", logout); //The get() method is used for handling GET requests (e.g., retrieving data or performing simple actions like logging out).
 
 export default router;

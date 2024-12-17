@@ -6,7 +6,7 @@ import XSvg from "../../../components/svgs/X";
 import { MdOutlineMail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 const LoginPage = () => {
@@ -14,6 +14,8 @@ const LoginPage = () => {
 		username: "",
 		password: "",
 	});
+
+	const queryClient = useQueryClient();
 	
 	const {mutate:loginMutation, isPending, isError, error} = useMutation({
 		mutationFn : async({username, password}) =>{
@@ -36,7 +38,13 @@ const LoginPage = () => {
 			}
 		},
 		onSuccess: ()=>{
-			toast.success("Login Successfull!") ;
+			// toast.success("Login Successfull!") ;
+			//Here when we fill the username and password , then when we click on login , it will redirect us to the home page
+			//using the concept of "INVALIDATING Queries" =>refetch the query
+
+			//Refetch the auth user
+			queryClient.invalidateQueries({queryKey: ["authUser"]});
+
 		}
 	})
 
@@ -87,7 +95,7 @@ const LoginPage = () => {
 					{isError && <p className='text-red-500'>{error.message}</p>}
 				</form>
 				<div className='flex flex-col gap-2 mt-4'>
-					<p className='text-white text-lg'>{"Don't"} have an account?</p>
+					<p className='text-white text-lg'>{"Don't"} Have an account?</p>
 					<Link to='/signup'>
 						<button className='btn rounded-full btn-primary text-white btn-outline w-full'>Sign up</button>
 					</Link>
