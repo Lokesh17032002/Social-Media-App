@@ -1,8 +1,8 @@
 // creating express server 
 import express, { urlencoded } from "express";
+import cors from "cors"
 import path from "path"
 import dotenv from "dotenv";
-import { connect } from "mongoose";
 import connectMongoDB from "./db/connectMongoDB.js";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary" ;
@@ -30,6 +30,8 @@ app.use(express.json({limit: "10mb"})); //to parse req.body in auth.controllers.
 //otherwise DOS attack is easy on this)
 app.use(express.urlencoded({ extended:true })) ; //to parse form data
 app.use(cookieParser()) ;
+app.use(cors({ origin: "*", credentials: true }));
+
 
 //getting undeffined because we cannot read it(go to line 6 now)
 // console.log(process.env.MONGO_URI);

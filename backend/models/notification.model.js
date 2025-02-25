@@ -16,11 +16,10 @@ const notificationSchema = new mongoose.Schema({
         required: true,
         enum: ['follow', 'like']
     },
-    read:{
+    read: {
         type: Boolean,
-        dafault: false
-    }
-
+        default: false
+    }    
 },{timestamps : true}) ;
 
 const Notification = mongoose.model('Notification',notificationSchema) ;
